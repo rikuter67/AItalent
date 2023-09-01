@@ -435,7 +435,7 @@ def app():
             Comment: "{st.session_state.user_comment}"
 
             How would you respond to this comment in a way that reflects your casual and pop style, values, and personality?
-            Refer to the post and prepare as short a reply as possible with the wording of the comment.
+            Refer to the post and prepare a reply that is as short as possible in the same language as the comment.
             """
 
             # GPT-3 API呼び出し
