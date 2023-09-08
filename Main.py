@@ -7,7 +7,7 @@ from text_samples import cafe_example1, cafe_example2, cafe_example3, travel_exa
 from comment_samples import comment_sample1, comment_sample2, comment_sample3, comment_sample4, comment_sample5, comment_sample6, comment_sample7, comment_sample8, comment_sample9
 
 # 環境変数にAPIキーを設定
-openai.api_key = env.openai_key
+openai.api_key = st.secrets["openai_key"]
 
 # セッション状態を管理するためのクラス
 class State:
