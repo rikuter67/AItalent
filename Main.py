@@ -3,6 +3,9 @@ import openai
 import env
 import pdb
 
+from text_samples import cafe_example1, cafe_example2, cafe_example3, travel_example1, travel_example2, travel_example3, shopping_example1, shopping_example2, shopping_example3, daily_life_example1, daily_life_example2, daily_life_example3
+from comment_samples import comment_sample1, comment_sample2, comment_sample3, comment_sample4, comment_sample5, comment_sample6, comment_sample7, comment_sample8, comment_sample9
+
 # 環境変数にAPIキーを設定
 openai.api_key = env.openai_key
 
@@ -80,223 +83,6 @@ def app():
         st.session_state.hashtags = st.text_input("ハッシュタグ:", value=st.session_state.hashtags)
         st.session_state.keywords = st.text_input("キーワード（カンマ区切りで複数入力可）:", value=st.session_state.keywords)
 
-    # カフェの例1
-    cafe_example1 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        6th by ORIENTAL HOTELでの素敵な時間を少し前に友人と過ごしました👫✨
-
-        そこで食べたチーズケーキとホットケーキ🍰🥞
-        大きくて満足度が高いのはもちろん、しつこくない甘さで甘すぎないのもポイントでした👌
-
-        友人と半分こして食べたバスクチーズケーキ🧀
-        最高でした😋 🤎
-
-        おすすめpoint☝🏻
-        ✔︎ 大きくて満足度が高い🎉
-        ✔︎ しつこくない甘さ🍭
-        ✔︎ 友人と半分こして楽しめる👭
-
-        みなさんもぜひ、この素晴らしい体験をしてみてくださいね〜🌟
-
-        📷:@yuicafetokyo
-        ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰ
-        📍6th by ORIENTAL HOTEL
-        🕒 11:00-
-        💰 -3,999
-        ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰ
-        #ORIENTALHOTEL #チーズケーキ #ホットケーキ #友達と半分こ #バスクチーズケーキ #美味しすぎ #楽しい時間 #カフェ体験 #食べ物探検 #甘いもの好きな人と繋がりたい
-        """
-    }
-
-    # カフェの例2
-    cafe_example2 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        湯島天神と神田明神の近くで冷たいスイーツが食べたくなって🍰❄️
-
-        ってことで、サカノウエカフェさんへ行ってきたよ🧁
-
-        こおりのショートケーキ、口に入れた瞬間に溶けるくらいふわふわで、氷の中にいちごのような甘さが隠れてるんだ〜✨
-
-        最後までおいしいって、本当に最高だったよ😋 🤍
-
-        みんなはこんなふわふわのケーキ食べたことある？🧐
-
-        📷: @yuicafetokyo
-
-        ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰ
-        📍サカノウエカフェ
-        🚃 湯島天神と神田明神の近く
-        🕒 定休日：月曜日＆不定休
-        💰 1000-3000円
-        ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰ
-        #サカノウエカフェ #こおりのショートケーキ #湯島天神 #神田明神 #ふわふわ #美味しすぎ #カフェ体験 #甘いもの好きな人と繋がりたい #カフェ巡り #東京カフェ #特別な体験
-        """
-    }
-
-    # カフェの例3
-    cafe_example3 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        本屋📚をリノベしたおしゃカフェ𓂃𖠚ᐝ
-
-        Happy Hour @happy_hour2020
-        に行ってきたよ〜 🫣🫶
-
-        --わたしが食べたもの --
-        オニオングラタンスープ 🧅
-        プレミアムグリルドチーズサンドイッチ 🥪
-
-        おすすめpoint☝-
-        ✔︎︎︎︎マグカップに入った熱々ｵﾆｵﾝｸﾞﾗﾀﾝｽｰﾌﾟ
-        ✔︎︎︎︎天井吹き抜けのおしゃれ空間 🪟
-        ✔︎︎︎︎手づくり無添加の自家製料理👩‍🍳
-
-        インスタ映えだけじゃない！
-
-        空間や食材にもこだわるカフェ🤎🤍
-
-        是非行ってみてね🙌
-
-        📍Happy Hour
-        🚃広尾駅から徒歩10分
-        🕒11:00-21:00
-        💰￥1,000-1,999
-        ￥2,000-2,999🌙*ﾟ
-        #かわいい食器 # #東京甘党 #食べてみて #楽しいカフェ体験 #lunch #甘党女子 #甘党男子 #甘党さんと繋がりたい #カフェ巡り #東京カフェ #カフェ巡り部 #happyhour #広尾カフェ #広尾ランチ #オニオングラタンスープ #サンドイッチ #チーズ好きな人と繋がりたい
-        """
-    }
-
-    # 旅行の例1
-    travel_example1 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        友達とユニバ旅行👯‍♀️
-
-        暑かったけど、大好きなフライングダイナソーに乗れたから満足～👍
-        """
-    }
-
-    # 旅行の例2
-    travel_example2 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        ディズニーランドに行ったときの写真🐭🕌🤍
-
-        念願のパレード見れてうれしかった～！
-
-        キラキラのカチューシャは友達とおそろいなの🥰
-        """
-    }
-
-    # 旅行の例3
-    travel_example3 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        富士山頂上での感動の一瞬🏔️✨ 朝焼けと共に登頂成功！🌟
-
-        体力的にはキツかったけど、友達との最高の思い出ができたよ
-
-        天気も最高で、景色が本当に美しかった🤍🤎 富士山、また挑戦したいな🙌
-        """
-    }
-
-    # ショッピングの例1
-    shopping_example1 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        先日渋谷を散歩してたら、Snapchatのキャンペーン発見👀✨
-
-        ヘアピンもゲットしちゃった🙌
-
-        タグ付けして投稿すると、なんと渋谷駅の広告に選ばれるチャンスが！🌟
-        みんなで挑戦しよう！！
-
-        @no_snap_no_life
-
-        #スナップチャット #ホントのきみのシェアアプリ #スナチャの広告に出たい #snapchat #渋谷
-        """
-    }
-
-    # ショッピングの例2
-    shopping_example2 = {
-        "role": "assistant",
-        "content": """
-        @yuicafetokyo
-
-        Coachで友人へのプレゼント探し🎁
-
-        良いもの見つけて超嬉しい〜👍✨
-
-        喜んでくれるといいな🤍🤎
-        """
-    }
-
-    # ショッピングの例3
-    shopping_example3 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        GUCCIの体験型イベント【GUCCI BAMBOO SUMMER】へ行ってきたよ〜👜
-
-        バンブーコレクションは1947年から続いてるんだって🎋
-
-        当時の作品が見れたり、工房が再現されていたりと見ていて楽しかった♡
-
-        入場無料でこんな素敵な体験ができるなんて貴重✨
-
-        #gucci #guccibamboo #guccibamboosummer #表参道ヒルズ
-    """
-    }
-
-    # 日常の例1
-    daily_life_example1 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        ４年ぶりくらいに夏祭りへ🩵✨
-
-        可愛い浴衣も着れて大満足☺️とにかく楽しかった〜🍧
-
-        📷: @yuicafetokyo
-        """
-    }
-
-    # 日常の例2
-    daily_life_example2 = {
-        "role": "assistant",
-        "content": "🥺🤍✨🧸"
-    }
-
-    # 日常の例3
-    daily_life_example3 = {
-        "role": "assistant",
-        "content": """
-        AIのゆいです🧸🤍
-
-        地元の友達と川へドライブに行ってきたよ🚗
-
-        BBQしたり川に入ったりして、思いっきり夏を感じた1日だった…🌺🥰
-        """
-    }
-
     # 生成ボタンが押されたら文章を生成
     if st.button('投稿文を生成', key="generate_post_button"):
         # Few-shot learningの例
@@ -335,10 +121,8 @@ def app():
         - Price Range: {st.session_state.store_price_range}
         - Hashtags: {st.session_state.hashtags}
         - Keywords: {st.session_state.keywords}
-
         - Hashtags: {st.session_state.hashtags}
         (Include these in the post, and feel free to add more that fit the theme)
-
         - Keywords: {st.session_state.keywords}
         (These should be woven into the post naturally)
 
@@ -348,7 +132,7 @@ def app():
 
         # GPT-3 API呼び出し
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": f"""
                 あなたはAIタレントのゆいです。Instagramで活動しています。
@@ -427,23 +211,12 @@ def app():
         st.subheader("コメント:")
         st.session_state.user_comment = st.text_input("コメントを入力してください:", value=st.session_state.user_comment)
 
-        if st.button('コメント送信', key="submit_comment_button"):
-            # GPT-3による返答生成
-            comment_prompt = f"""
-            A follower commented on your recent Instagram post about {st.session_state.category}:
-            Post Content: {st.session_state.choices[st.session_state.selected_index]}
-            Comment: "{st.session_state.user_comment}"
-
-            How would you respond to this comment in a way that reflects your casual and pop style, values, and personality?
-            Refer to the post and prepare a reply that is as short as possible in the same language as the comment.
-            """
-
-            # GPT-3 API呼び出し
-            comment_response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
+        messeage = [
                 {"role": "system", "content": """
                 あなたはAIタレントのゆいです。Instagramで活動しています。
+                投稿に対するフォロワーからのコメントに対して返信をするように依頼されました。
+                以下にあなたに関する情報を記載しますので、それを参考にして返信をしてください。
+                
                 # 詳細プロフィール
 
                 - **スタイル**: カジュアルでポップなスタイル。カラフルで活発なビジュアル。
@@ -471,14 +244,35 @@ def app():
                 出身地: 千葉県
                 職業: バリスタ
                 Instagramハンドル: @YuiCafeTokyo
-                """},  # 既存のSystemメッセージ
-                {"role": "assistant", "content": 
-                 """
-                Gorgeous ❤️
-                Thank you ✌️😉
-                 """},
-                {"role": "user", "content": comment_prompt}
-            ],
+                """}
+        ]
+
+        if st.button('コメント送信', key="submit_comment_button"):
+            # GPT-3による返答生成
+            comment_prompt = f"""
+            あなたの最近のインスタグラムの投稿に、フォロワーから次のようなコメントが寄せられた。 {st.session_state.category}:
+            投稿した文章: {st.session_state.choices[st.session_state.selected_index]}
+            ユーザーからのコメントコメント: "{st.session_state.user_comment}"
+
+            このコメントに対して、あなたの人柄やプロフィールからどのように返信するだろうか？
+            投稿した文章に対するコメントの返信として尤もらしいものを、'{st.session_state.user_comment}と同じ言語'かつ'同じくらいの長さの文字数'の返信を用意してください。
+            """
+
+            messeage.append({"role": "user", "content": comment_prompt})
+            messeage.append(comment_sample1)
+            messeage.append(comment_sample2)
+            messeage.append(comment_sample3)
+            messeage.append(comment_sample4)
+            messeage.append(comment_sample5)
+            messeage.append(comment_sample6)
+            messeage.append(comment_sample7)
+            messeage.append(comment_sample8)
+            messeage.append(comment_sample9)
+
+            # GPT-3 API呼び出し
+            comment_response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=messeage,
             max_tokens=200,  # 200文字以内の返答に制限
         )
 
@@ -489,6 +283,8 @@ def app():
                 "comment": st.session_state.user_comment,
                 "reply": generated_reply
             })
+            response_message = {"role": "assistant", "content": generated_reply}
+            messeage.append(response_message)
             # 過去のコメントと返信を表示
             for i, pair in enumerate(state.comments_replies):
                 st.write(f"@you: {pair['comment']}")
