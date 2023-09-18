@@ -272,9 +272,9 @@ def app():
 
                 # GPT-3 API呼び出し
                 comment_response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=messeage,
-                max_tokens=200,  # 200文字以内の返答に制限
+                max_tokens=300,  # 200文字以内の返答に制限
             )
 
                 # 生成されたテキストを取得して表示（と保存）
