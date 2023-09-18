@@ -272,7 +272,7 @@ def app():
 
                 # GPT-3 API呼び出し
                 comment_response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-3.5-turbo",
                 messages=messeage,
                 max_tokens=200,  # 200文字以内の返答に制限
             )
@@ -289,7 +289,6 @@ def app():
 
                 response_message = {"role": "assistant", "content": generated_reply}
                 messeage.append(response_message)
-                pdb.set_trace()
                 
                 # 過去のコメントと返信を表示
                 for comment, reply in zip(user_history['comments'], user_history['replies']):
