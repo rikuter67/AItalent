@@ -28,7 +28,6 @@ def get_user_history(username, state):
         state.comments_replies[username] = {
             'comments': [],
             'replies': [],
-            'messages': []
         }
         return state.comments_replies[username]
     
@@ -255,7 +254,7 @@ def app():
             ]
 
             # ここで会話の履歴を追加
-            for message in user_history['messages']:
+            for message in user_history['comments'] + user_history['replies']:
                 messeage.append(message)
 
             if st.button('コメント送信', key="submit_comment_button"):
@@ -264,7 +263,8 @@ def app():
                 あなたの最近のインスタグラムの投稿に、フォロワーから次のようなコメントが寄せられた。
                 ユーザーからのコメントコメント: "{st.session_state.user_comment}"
 
-                このコメントに対して、必要ならプロフィールや投稿文章、会話履歴を用いて返信してください。
+                このコメントに対して、必要ならプロフィールや投稿文章、会話履歴を用いてゆいっぽく返信してください。
+                なお返信文は話し言葉のみで出力してください。(余計な前置きやAIであることを明示する文章などは入りません)
                 """
 
                 messeage.append({"role": "user", "content": comment_prompt})
@@ -280,20 +280,19 @@ def app():
                 # 生成されたテキストを取得して表示（と保存）
                 generated_reply = comment_response['choices'][0]['message']['content']
                 
-                # 新しい返信を追加
-                user_history['replies'].append(generated_reply)
                 # 新しいコメントを追加
-                user_history['comments'].append(st.session_state.user_comment)
+                user_history['comments'].append({"role": "user", "content": st.session_state.user_comment})
                 # 新しいメッセージを追加
-                user_history['messages'].append({"role": "user", "content": generated_reply})
+                user_history['replies'].append({"role": "system", "content": generated_reply})
 
                 response_message = {"role": "assistant", "content": generated_reply}
+
                 messeage.append(response_message)
                 
                 # 過去のコメントと返信を表示
                 for comment, reply in zip(user_history['comments'], user_history['replies']):
-                    st.write(f"{username}: {comment}")
-                    st.write(f"@yuicafetokyo: {reply}")
+                    st.write(f"{username}: {comment['content']}")
+                    st.write(f"@yuicafetokyo: {reply['content']}")
 
 
 # アプリを実行
